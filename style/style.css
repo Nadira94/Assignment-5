@@ -154,6 +154,8 @@ body {
   margin-right: 6px;
 }
 
+
+
 .card-actions button:first-child {
   background: #f9f9f9;
 }
@@ -242,4 +244,17 @@ body {
   .cards {
     grid-template-columns: 1fr;
   }
+}
+/* ----- Button Hover Effects ----- */
+.card-actions button:first-child:hover {
+  background: #ddd;               
+  transform: scale(1.05);         
+  transition: all 0.2s ease-in-out;
+}
+
+.card-actions button:last-child:hover {
+  background: #007a4d;            
+  transform: scale(1.05);
+  transition: all 0.2s ease-in-out;
+  color: #fff;
 }
