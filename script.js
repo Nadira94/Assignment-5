@@ -15,7 +15,6 @@ function showToast(message) {
   }, 2500);
 }
 
-
 // Copy number
 function copyNumber(number) {
   navigator.clipboard.writeText(number);
@@ -36,35 +35,13 @@ function makeCall(name, number) {
 
   let historyList = document.getElementById("historyList");
   let li = document.createElement("li");
-  let time = new Date().toLocaleTimeString();
+
+  // 12-hour format with AM/PM
+  let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+
   li.innerText = `${name} (${number}) - ${time}`;
   historyList.prepend(li);
 }
-
-// Copy number
-function copyNumber(number) {
-  navigator.clipboard.writeText(number);
-  showToast("✅ Copied: " + number);
-  copyCount++;
-  document.getElementById("copyCount").innerText = copyCount;
-}
-
-// Make a call
-function makeCall(name, number) {
-  if (coinCount < 20) {
-    showToast("❌ Not enough coins!");
-    return;
-  }
-  showToast(`📞 Calling ${name}...`);
-  coinCount -= 20;
-  document.getElementById("coinCount").innerText = coinCount;
-
-  let historyList = document.getElementById("historyList");
-  let li = document.createElement("li");
-  let time = new Date().toLocaleTimeString();
-  li.innerText = `${name} (${number}) - ${time}`;
-  historyList.prepend(li);
-} 
 
 // Heart
 function increaseHeart(el) {
@@ -82,4 +59,3 @@ function clearHistory() {
   document.getElementById("historyList").innerHTML = "";
   showToast("🗑️ History Cleared");
 }
-
